@@ -1,8 +1,6 @@
 import pickle
 import os
 
-# https://towardsdatascience.com/serving-prophet-model-with-flask-predicting-future-1896986da05f
-
 
 def load_model_bitcoin():
     dir_model = os.path.abspath(__name__)
