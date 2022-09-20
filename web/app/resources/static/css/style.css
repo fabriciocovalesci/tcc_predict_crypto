@@ -1,0 +1,11 @@
+
+
+.content {
+    background-color: aqua;
+}
+
+.coin-logo {
+    height: 24px;
+    width: 24px;
+    border-radius: 12px;
+}

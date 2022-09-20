@@ -1,0 +1,76 @@
+{% extends "layouts/base.html" %}
+
+
+{% block title %}
+    <title>Coin {{crypto_name}}</title>
+{% endblock %}
+
+
+{% block content %}
+<script>
+    let crypto =  {{ crypto_name|tojson }};
+</script>
+
+<a href="/"  class="btn btn-primary">Voltar</a>
+
+<div class="container">
+    <div class="dropdown">
+        <span>Prever: </span>
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Dias
+        </button>
+        <ul class="dropdown-menu">
+            {% for day in range(1,8) %}
+            <li><a class="dropdown-item" onclick="get_day('{{day}}', crypto)" id="day_predict_{{day}}" href="#">{{ day }} dias</a></li>
+            {% endfor %}
+        </ul>
+      </div>
+  </div>
+
+  <table class="table">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+
+<div class="container text-center">
+    <div class="row">
+      <div class="col">
+        Column
+      </div>
+      <div class="col">
+        Column
+      </div>
+      <div class="col">
+        Column
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

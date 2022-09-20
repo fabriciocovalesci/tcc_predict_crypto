@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}
+    <title>Home</title>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    {% for item in content_cards %}
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <div style="display: flex;">
+              <img src="static/images/{{item.image}}" class="coin-logo" style="object-fit: cover;">
+              <h5 class="card-title" style="margin-left: 10px;">{{item.crypto_name}}</h5>
+            </div>
+            <!-- <p class="card-text">{{item.trend}}</p> -->
+            <!-- <img src="static/images/{{item.image}}" style="object-fit: cover;"> -->
+            <a href="/coin/{{ item.crypto_name }}"  class="btn btn-primary">Prever - {{item.par}}</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}
