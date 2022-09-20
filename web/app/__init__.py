@@ -3,6 +3,7 @@ from flask import Flask
 from flask_cors import CORS
 from app import routes
 from app.config import BASE_DIR
+from app.filters import format_date
 import os
 
 
@@ -14,6 +15,7 @@ def create_app():
     CORS(app)
     
     app.config["TEMPLATES_AUTO_RELOAD"] = True
+    app.jinja_env.filters["format_date"] = format_date
 
     routes.init_app(app)
         

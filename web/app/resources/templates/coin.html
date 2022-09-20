@@ -11,49 +11,41 @@
     let crypto =  {{ crypto_name|tojson }};
 </script>
 
-<a href="/"  class="btn btn-primary">Voltar</a>
 
-<div class="container">
-    <div class="dropdown">
-        <span>Prever: </span>
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Dias
-        </button>
-        <ul class="dropdown-menu">
-            {% for day in range(1,8) %}
-            <li><a class="dropdown-item" onclick="get_day('{{day}}', crypto)" id="day_predict_{{day}}" href="#">{{ day }} dias</a></li>
-            {% endfor %}
-        </ul>
-      </div>
+<div class="container py-2">
+  <a href="{{ url_for('home.index') }}"  class="btn btn-primary">Voltar</a>
+  <div class="d-flex justify-content-between p-2 align-items-baseline">
+    <p></p>
+    <h4 class="fw-bold fs-4 text">{{ crypto_name }}</h4>
+    <p>Preço atual: US$ {{ price_current }}</p>
   </div>
 
-  <table class="table">
-    <thead class="table-light">
+  <div class="container">
+      <div class="dropdown">
+          <span>Prever: </span>
+          <button class="btn btn-info dropdown-toggle me-md-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-activity"></i>
+            Dias
+          </button>
+          <ul class="dropdown-menu">
+              {% for day in range(1,8) %}
+              <li><a class="dropdown-item" onclick="get_day('{{day}}', crypto)" id="day_predict_{{day}}" href="#">{{ day }} dias</a></li>
+              {% endfor %}
+          </ul>
+        </div>
+    </div>
+</div>
+
+
+  <table class="table table-dark table-striped">
+    <thead >
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Dia</th>
+        <th scope="col">Preço {{ symbol|upper }}-USD</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
+    <tbody id="tbody-predict">
+      
     </tbody>
   </table>
 

@@ -1,3 +1,6 @@
+import httpx
+
+BASE_URL_COIN = "https://api.coingecko.com/api/v3/"
 
 
 def get_symbol_by_name(crypto):
@@ -15,3 +18,13 @@ def get_symbol_by_name(crypto):
             ]
     symbol = [item.get("symbol") for item in data if item.get("name") == crypto ][0]
     return symbol
+
+
+
+
+def get_price_coin(crypto):
+    crypto = crypto.lower()
+    endpoint = f"simple/price?ids={crypto}&vs_currencies=usd"
+    resp = httpx.get(f"{BASE_URL_COIN}{endpoint}")
+    if resp.status_code == 200:
+        return resp.json()
