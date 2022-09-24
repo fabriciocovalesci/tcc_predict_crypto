@@ -10,6 +10,8 @@ function format_date(date){
 }
 
 
+const BASE_URL_COIN = "https://api.coingecko.com/api/v3/"
+
 function construct_tr(day, price){
   tr = `
     <tr class="table-success">
@@ -19,6 +21,33 @@ function construct_tr(day, price){
   `
   return tr
 }
+
+
+function format_currency(currency){
+  const value = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(currency);
+  return value
+}
+
+
+
+const getPriceCrypto = async (crypto) => {
+  try {
+      const resp = await axios.get(`${BASE_URL_COIN}simple/price?ids=${crypto}&vs_currencies=usd`);
+      return format_currency(resp.data[crypto].usd)
+  } catch (err) {
+      console.error(err);
+  }
+};
+
+
+
+window.addEventListener("load", function(){
+  let ids = ["bitcoin", "ethereum", "binancecoin", "ripple", "cardano", "solana", "dogecoin", "polkadot", "matic-network", "dai"]
+  ids.forEach(async(id) => {
+    $(`#price-${id}`)[0].append(await getPriceCrypto(id))
+  })
+});
+
 
 
 function get_day(day, crypto) {

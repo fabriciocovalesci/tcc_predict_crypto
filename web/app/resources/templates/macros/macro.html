@@ -1,0 +1,27 @@
+
+
+
+{% macro card_component(image, crypto_name, par, price, id) -%}
+  <div class="col-md-4 px-2 py-2">
+    <div class="card">
+      <div class="card-block">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex p-2">
+                    <img src="static/images/{{image}}" class="coin-logo" style="object-fit: cover;">
+                    <h5 class="card-title" style="margin-left: 10px;">{{crypto_name}}</h5>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-end p-2">
+                    <span class="fw-bold" id="price-{{id}}"></span>
+                </div>
+            </div>
+          </div>
+        <div class="d-flex justify-content-evenly p-2">
+            <a href="/coin/{{ crypto_name }}"  class="btn btn-primary">Prever - {{par}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endmacro %}
