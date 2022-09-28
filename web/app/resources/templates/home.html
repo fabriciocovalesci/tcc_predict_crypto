@@ -10,17 +10,13 @@
 {% block content %}
 
 
-
-
-
   <div id="wrapper">
     <div class="content-area">
       <div class="container-fluid">
         
         <div class="main">
 
-
-        <!-- <div class="row sparkboxes mt-4 mb-4"></div>
+        <div class="row sparkboxes mt-4 mb-4"></div>
           <div class="row sparkboxes mt-4 mb-4">
             <div class="col-md-4">
               <div class="box box1">
@@ -37,7 +33,7 @@
                 <div id="spark3"></div>
               </div>
             </div>
-          </div> -->
+          </div>
 
           <div class="py-5">
             <div class="container">
@@ -49,6 +45,9 @@
             </div>
           </div>
 
+          <div class="container" id="chart-heatmap"></div>
+
+          <p>ola</p>
           <div class="row mt-5 mb-4">
             <div class="col-md-6">
               <div class="box">
@@ -61,7 +60,6 @@
               </div>
             </div>
           </div>
-
           <div class="row mt-4 mb-4">
             <div class="col-md-6">
               <div class="box">
@@ -74,9 +72,24 @@
               </div>
             </div>
           </div>
+
+          
+
         </div>
       </div>
+      <div id="chart-heatmap"></div>
     </div>
   </div>
+
+
+
+{% endblock %}
+
+
+{% block javascript %}
+
+  <script  src="{{ url_for('static', filename='js/requests/predictCrypto/index.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/charts/heatmap.js') }}"></script>
+  <script  src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 {% endblock %}

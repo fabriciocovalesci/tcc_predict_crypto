@@ -1,9 +1,12 @@
 from flask import Blueprint, render_template
 from flask import jsonify, request
 import os
-from app.utils.helpers import create_image_corr, get_price_coin
+from app.utils.helpers import Helper
 
 home = Blueprint("home", __name__)
+
+
+helper_crypto = Helper("2020-01-01")
 
 
 @home.route('/')
@@ -20,10 +23,18 @@ def index():
         {"crypto_name": "Polygon", "par": "MATIC-USD", "trend": "Alta", "image": "polygon.png", "id": "matic-network"},
         {"crypto_name": "Dai", "par": "DAI-USD", "trend": "Alta", "image": "dai.png", "id": "dai"}
     ]
+    new_card = []
+    
+    print("helper_crypto ", helper_crypto.pairs)
+    # for item in content_cards:
+    #     resp = get_price_coin(item.get('crypto_name'), False)
+    #     new_card.append({
+    #     "crypto_name": item.get('crypto_name'), "par": item.get('par'), "trend": item.get('trend'), "image": item.get('image'), "price": resp
+    #     })
     return render_template("home.html", content_cards=content_cards, plot_url='corr.png')
 
 
         
-# @home.route("/visualize", methods=['GET'])
-# def visualize():
-#     return create_image_corr()
+@home.route("/corr", methods=['GET'])
+def corr():
+    return helper_crypto.main()

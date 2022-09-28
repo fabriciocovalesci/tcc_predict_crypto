@@ -690,3 +690,132 @@ Apex.grid = {
   $(window).resize(function() {
     mobileDonut()
   });
+
+
+
+
+
+
+  function generateData(count, yrange) {
+    var i = 0;
+    var series = [];
+    while (i < count) {
+      var x = (i + 1).toString();
+      var y =
+        Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+  
+      series.push({
+        x: x,
+        y: y
+      });
+      i++;
+    }
+    return series;
+  }
+  
+  var options = {
+    chart: {
+      height: 350,
+      type: "heatmap"
+    },
+    colors: [
+      "#5A9BD5",
+      "#5A9BD5",
+      "#5A9BD5",
+      "#5A9BD5",
+      "#ffffff",
+      "#F8C045",
+      "#F8C045",
+      "#F8C045",
+      "#F8C045"
+    ],
+    plotOptions: {
+      heatmap: {
+        shadeIntensity: 1
+      }
+    },
+    dataLabels: {
+      enabled: true
+    },
+    series: [
+      {
+        name: "Bitcoin",
+        data: generateData(20, {
+          min: -30,
+          max: 55
+        })
+      },
+      {
+        name: "Ethereum",
+        data: generateData(20, {
+          min: -30,
+          max: 55
+        })
+      },
+      {
+        name: "Mar",
+        data: generateData(20, {
+          min: -30,
+          max: 55
+        })
+      },
+      {
+        name: "Apr",
+        data: generateData(20, {
+          min: -30,
+          max: 55
+        })
+      },
+      {
+        name: "",
+        data: generateData(20, {
+          min: 0,
+          max: 0
+        })
+      },
+      {
+        name: "May",
+        data: generateData(20, {
+          min: -30,
+          max: 55
+        })
+      },
+      {
+        name: "Jun",
+        data: generateData(20, {
+          min: -30,
+          max: 55
+        })
+      },
+      {
+        name: "Jul",
+        data: generateData(20, {
+          min: -30,
+          max: 55
+        })
+      },
+      {
+        name: "Aug",
+        data: generateData(20, {
+          min: -30,
+          max: 55
+        })
+      }
+    ],
+    tooltip: {
+      custom: function({ series, seriesIndex, dataPointIndex, w }) {
+        if (w.globals.seriesNames[seriesIndex] !== "") {
+          return series[seriesIndex][dataPointIndex]+" ab";
+        } else {
+          return "";
+        }
+      }
+    }
+  };
+  
+  var chartheatmap = new ApexCharts(document.querySelector("#chart-HeatMap"), options);
+  
+  chartheatmap.render();
+
+
+
