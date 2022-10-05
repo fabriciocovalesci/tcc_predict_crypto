@@ -18,7 +18,6 @@ async function getPriceCrypto(crypto) {
 async function getOHLC(crypto, days) {
     try {
         if (crypto && days) {
-            console.log('crypto ', crypto);
             const resp = await axios.get(`${BASE_URL_API}coins/${crypto}/ohlc?vs_currency=usd&days=${days}`);
             if (typeof resp.data !== undefined){
                 return resp.data;

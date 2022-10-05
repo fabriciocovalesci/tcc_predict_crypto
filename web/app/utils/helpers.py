@@ -10,28 +10,11 @@ import yfinance as yf
 from datetime import datetime
 from functools import reduce
 import os
-from app.config import DF_CORR, IMG_PLOT
+from app.config import IMG_PLOT
 from app.utils.helpers import * 
 
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
-
-
-def get_symbol_by_name(crypto):
-    data = [
-        { "name": "Bitcoin", "symbol": "btc" },
-        { "name": "Ethereum", "symbol": "eth" },
-        { "name": "Binance Coin", "symbol": "bnb" },
-        { "name": "Ripple", "symbol": "xrp" },
-        { "name": "Cardano", "symbol": "ada" },
-        { "name": "Solana", "symbol": "sol" },
-        { "name": "Dogecoin", "symbol": "doge" },
-        { "name": "Polkadot", "symbol": "dot" },
-        { "name": "Polygon", "symbol": "matic" },
-        { "name": "Dai", "symbol": "dai" },
-            ]
-    symbol = [item.get("symbol") for item in data if item.get("name") == crypto ][0]
-    return symbol
 
 
 class Helper:
@@ -111,7 +94,8 @@ class Helper:
         results = []
         for crypto in self.pairs:
             result = self.download_one_crypto(crypto.get('pair'))
-            results.append(pd.DataFrame(result.Close).rename(columns = {'Close': crypto.get('pair').split('-')[0]}))
+            if result:
+                results.append(pd.DataFrame(result.Close).rename(columns = {'Close': crypto.get('pair').split('-')[0]}))
         return results
     
     
@@ -126,7 +110,9 @@ class Helper:
     def main(self):
         try:
             download = self.download_all_crypto_dataframe()
-            join_dataframe = self.join_dataframe(download)
-            return self.df_corr_to_json(join_dataframe)
+            if download:
+                join_dataframe = self.join_dataframe(download)
+                return self.df_corr_to_json(join_dataframe)
+            
         except Exception as err:
             print(f"ERROR: {err}")

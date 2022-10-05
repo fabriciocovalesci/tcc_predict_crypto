@@ -17,6 +17,16 @@ let cryptos = [
 ]
 
 
+const crypto_id = cryptos.filter(elem => {
+  if (url.pathname.replace("/coin/", "").toLowerCase().replace(/\s/g, '').includes('binance')){
+    return elem
+  }
+   if (elem.name.toLocaleLowerCase() === url.pathname.replace("/coin/", "").toLowerCase().replace(/\s/g, '')){
+    return elem
+  }
+});
+
+
 function construct_tr(day, price) {
   tr = `
       <tr class="table-success">
@@ -29,13 +39,24 @@ function construct_tr(day, price) {
 
 
 
+window.addEventListener("load", async function(){
+  let day = $('#preview-day').text().replace(/\D/g,'')
+  await get_day(day, crypto_id[0].name)
+});
+
+
+
+
 function get_day(day, crypto) {
   if (day && crypto) {
+    $('#preview-day').empty();
+    $('#preview-day').append(`${day} dias`)
     axios({
       method: 'post',
       url: `${BASE_URL}/predict`,
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin' : '*'
       },
       data: {
         "period": day,
@@ -53,16 +74,6 @@ function get_day(day, crypto) {
       });
   }
 }
-
-
-const crypto_id = cryptos.filter(elem => { 
-  if (elem.name.toLocaleLowerCase() === "binance_coin"){
-    return elem
-  }
-  else if (elem.name.toLocaleLowerCase() === url.pathname.replace("/coin/", "").toLowerCase()){
-    return elem
-  }
-});
 
 
 

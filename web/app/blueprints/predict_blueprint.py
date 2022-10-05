@@ -6,10 +6,10 @@ import datetime
 
 from models_predict import PricePredictor
 from app.utils.helpers import Helper
-from app.client import get_price_coin
+from app.client import Client
+
 
 helper_crypto = Helper()
-
 
 predict = Blueprint("predict", __name__)
 
@@ -19,8 +19,9 @@ def access_coin(crypto_name):
     try:
         if re.search(r"\s", crypto_name):
             crypto_name = crypto_name.replace(" ", "_")
+        client = Client(crypto_name)
         symbol = helper_crypto.get_symbol_by_name(crypto_name)
-        price_current = get_price_coin(crypto_name, False)
+        price_current = client.get_price_coin()
         return render_template("coin.html", crypto_name=crypto_name, symbol=symbol, price_current=price_current)
     except Exception as err:
         print(f"ERROR: {err}")

@@ -60,10 +60,10 @@
           </button>
           <ul class="dropdown-menu">
               {% for day in range(1,8) %}
-              <li><a class="dropdown-item" onclick="get_day('{{day}}', crypto)" id="day_predict_{{day}}" href="#">{{ day }} dias</a></li>
+              <li style="cursor: pointer;"><a class="dropdown-item" onclick="get_day('{{day}}', crypto)" id="day_predict_{{day}}">{{ day }} dias</a></li>
               {% endfor %}
           </ul>
-          <span id="preview-day"> 2 dias</span>
+          <span value="1" id="preview-day"> 1 dia</span>
         </div>
     </div>
 
