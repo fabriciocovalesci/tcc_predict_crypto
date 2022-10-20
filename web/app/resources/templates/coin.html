@@ -51,7 +51,7 @@
   
     <div class="container" id="chart-candlestick-coin"></div>
 
-  <div class="container p-3">
+  <!-- <div class="container p-3">
       <div class="dropdown">
           <span class="fw-bold">Prever: </span>
           <button class="btn btn-info dropdown-toggle me-md-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -65,19 +65,24 @@
           </ul>
           <span value="1" id="preview-day"> 1 dia</span>
         </div>
-    </div>
+    </div> -->
 
 
 
   <table class="table table-dark table-striped">
     <thead >
       <tr>
-        <th scope="col">Dia</th>
-        <th scope="col">Preço {{ symbol|upper }}-USD</th>
+        <th scope="col">Dia Previsto</th>
+        <th scope="col">Preço Atual {{ symbol|upper }}-USD</th>
+        <th scope="col">Preço Predição {{ symbol|upper }}-USD</th>
       </tr>
     </thead>
-    <tbody id="tbody-predict">
-      
+    <tbody >
+      <tr class="table-success">
+        <th scope="row">{{ prediction.day_predict }}</th>
+        <td>{{ prediction.price_current }}</td>
+        <td>{{ prediction.price_predict }}</td>
+    </tr>
     </tbody>
   </table>
 </div>

@@ -3,7 +3,6 @@ from flask import jsonify, request
 import re
 import datetime
 
-
 from models_predict import PricePredictor
 from app.utils.helpers import Helper
 from app.client import Client
@@ -19,10 +18,10 @@ def access_coin(crypto_name):
     try:
         if re.search(r"\s", crypto_name):
             crypto_name = crypto_name.replace(" ", "_")
-        client = Client(crypto_name)
         symbol = helper_crypto.get_symbol_by_name(crypto_name)
-        price_current = client.get_price_coin()
-        return render_template("coin.html", crypto_name=crypto_name, symbol=symbol, price_current=price_current)
+        model = PricePredictor(symbol)
+        prediction = model.predict_price()
+        return render_template("coin.html", crypto_name=crypto_name, symbol=symbol, prediction=prediction)
     except Exception as err:
         print(f"ERROR: {err}")
 
@@ -35,8 +34,8 @@ def predict_coin():
         crypto = request.json['crypto']
         symbol = helper_crypto.get_symbol_by_name(crypto)
         today = datetime.datetime.strftime(datetime.datetime.today(), "%Y-%m-%d")
-        model = PricePredictor(today, period, symbol)
-        prediction = model.predict()   
+        model = PricePredictor(symbol)
+        prediction = model.predict_price()
         return jsonify(prediction)
     except Exception as e:
         print("error", e)

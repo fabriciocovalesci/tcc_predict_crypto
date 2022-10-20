@@ -13,6 +13,17 @@ async function getPriceCrypto(crypto) {
     }
 };
 
+async function getPriceCrypto1(crypto) {
+    $.ajax({
+        url: `${BASE_URL_API}simple/price?ids=${crypto}&vs_currencies=usd`,
+        async: true
+    }).done(function (data) { 
+        console.log('data ', data);
+        // return format_currency(resp.data[crypto].usd)
+       
+    });
+}
+
 
 
 async function getOHLC(crypto, days) {

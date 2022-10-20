@@ -1,7 +1,7 @@
 
 
 
-{% macro card_component(image, name, par, price, id) -%}
+{% macro card_component(image, name, pair, price, id) -%}
   <div class="col-md-4 px-2 py-2">
     <div class="card">
       <div class="card-block">
@@ -19,9 +19,42 @@
             </div>
           </div>
         <div class="d-flex justify-content-evenly p-2">
-            <a href="/coin/{{ name }}"  class="btn btn-primary">Prever - {{par}}</a>
+            <a href="/coin/{{ name }}"  class="btn btn-primary">Prever - {{pair}}</a>
         </div>
       </div>
     </div>
   </div>
+{%- endmacro %}
+
+{% macro card_component1(image, name, pair, price, id, trend, color) -%}
+<div class="col-md-4 py-2">
+  <div class="card" style="border-width: 1.5px;border-color: {{ color }}">
+      <div class="card-header bg-secondary">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex p-2">
+                    <img src="static/images/{{image}}" class="coin-logo" style="object-fit: cover;">
+                    <h5 class="card-title text-white" style="margin-left: 10px;">{{name}}</h5>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-end p-2">
+                  <span class="fw-bold text-white" id="price-{{id}}"></span>
+                </div>
+            </div>
+          </div>
+      </div>
+      <div class="card-body">
+        <div class="d-flex justify-content-evenly">
+            <p class="fs-5 text-success">Tendência</p>
+            <p class="fs-5 text-success" id="card-{{ id }}">{{ trend }}</p>
+        </div>
+        <div class="d-flex justify-content-evenly p-2">
+          <a href="/coin/{{ name }}">
+            <button class="btn btn-primary" type="button">Ver mais</button>
+          </a>
+      </div>
+      </div>
+  </div>
+</div>
 {%- endmacro %}

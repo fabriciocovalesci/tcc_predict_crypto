@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% from 'macros/macro.html' import card_component %}
+{% from 'macros/macro.html' import card_component, card_component1 %}
 
 {% block title %}
     <title>Home</title>
@@ -13,83 +13,25 @@
   let crypto_corr =  {{ crypto_corr|tojson }};
 </script>
 
-
-
-  <div id="wrapper">
-    <div class="content-area">
-      <div class="container-fluid">
-        
-        <div class="main">
-
-        <div class="row sparkboxes mt-4 mb-4"></div>
-          <div class="row sparkboxes mt-4 mb-4">
-            <div class="col-md-4">
-              <div class="box box1">
-                <div id="spark1"></div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="box box2">
-                <div id="spark2"></div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="box box3">
-                <div id="spark3"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="py-5">
-            <div class="container">
-              <div class="row hidden-md-up">
-                {% for item in content_cards %}
-                  {{ card_component(item.image, item.name, item.par, item.price, item.id) }}
-                  {% endfor %}
-              </div>
-            </div>
-          </div>
-
-          <div class="container" id="chart-heatmap"></div>
-
-          <p>ola</p>
-          <div class="row mt-5 mb-4">
-            <div class="col-md-6">
-              <div class="box">
-                <div id="bar"></div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="box">
-                <div id="donut"></div>
-              </div>
-            </div>
-          </div>
-          <div class="row mt-4 mb-4">
-            <div class="col-md-6">
-              <div class="box">
-                <div id="area"></div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="box">
-                <div id="line"></div>
-              </div>
-            </div>
-          </div>
-
-          
-
+      <div class="container">
+        <div class="row hidden-md-up">
+          {% for item in content_cards %}
+            {% if item.trend == "BUY" %}
+                {{ card_component1(item.image, item.name, item.pair, item.price, item.id, item.trend, "green") }}
+            {% elif item.trend == "SELL" %}
+              {{ card_component1(item.image, item.name, item.pair, item.price, item.id, item.trend, "red") }}
+            {% else %}
+              {{ card_component1(item.image, item.name, item.pair, item.price, item.id, item.trend, "gray") }}
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
+     
       <div id="chart-heatmap"></div>
     </div>
   </div>
 
-
-
 {% endblock %}
-
 
 {% block javascript %}
 

@@ -11,9 +11,23 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700" rel="stylesheet"/>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700" rel="stylesheet"/> 
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.0/axios.min.js" integrity="sha512-XBNfhLlCtb8qnULwqSg1EK2BgkP6KLmBsYWOdvCnOmtrQvV7paArUOYgAbBHEKeziyhqmY2o8iavAVtL4tvYDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
+    <style>
+      body { 
+        padding-top: 65px; 
+      }
+
+  </style>
+
+ 
     
     {% block title %}{% endblock %}
 </head>
@@ -22,11 +36,11 @@
 
   {% include 'components/navbar.html' %}
 
-  <div class="p-5"></div></div> 
 
 
-  <main class="container py-8  container-sm container-md container-lg container-xl container-xxl container-fluid">
-  
+
+  <main class="container container-sm container-md container-lg container-xl container-xxl container-fluid">
+    
     {% block content %}{% endblock %}
   
   </main>
@@ -35,12 +49,15 @@
 
 
 
+  <!-- {% include 'components/footer.html' %} -->
+
 
     <!-- <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <div class="col-md-4 d-flex align-items-center">
         <span class="text-muted">footer</span>
       </div>
     </footer> -->
+
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js" integrity="sha256-qXBd/EfAdjOA2FGrGAG+b3YBn2tn5A6bhz+LSgYD96k=" crossorigin="anonymous"></script>
   <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
@@ -52,7 +69,7 @@
   <script src="{{ url_for('static', filename='js/requests/coingecko/index.js') }}"></script>
   <script src="{{ url_for('static', filename='js/requests/predictCrypto/index.js') }}"></script>
   <script src="{{ url_for('static', filename='js/utils/index.js') }}"></script>
-  <script src="{{url_for('static', filename='js/data.js')}}"></script>
+
 
   {% block javascript %}{% endblock %}
 </body>
