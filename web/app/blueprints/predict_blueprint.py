@@ -27,16 +27,16 @@ def access_coin(crypto_name):
 
 
 
-@predict.route("/predict", methods=['POST'])
-def predict_coin():
-    try:
-        period = int(request.json['period'])
-        crypto = request.json['crypto']
-        symbol = helper_crypto.get_symbol_by_name(crypto)
-        today = datetime.datetime.strftime(datetime.datetime.today(), "%Y-%m-%d")
-        model = PricePredictor(symbol)
-        prediction = model.predict_price()
-        return jsonify(prediction)
-    except Exception as e:
-        print("error", e)
+# @predict.route("/predict", methods=['POST'])
+# def predict_coin():
+#     try:
+#         period = int(request.json['period'])
+#         crypto = request.json['crypto']
+#         symbol = helper_crypto.get_symbol_by_name(crypto)
+#         today = datetime.datetime.strftime(datetime.datetime.today(), "%Y-%m-%d")
+#         model = PricePredictor(symbol)
+#         prediction = model.predict_price()
+#         return jsonify(prediction)
+#     except Exception as e:
+#         print("error", e)
         

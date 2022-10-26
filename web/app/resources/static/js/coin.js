@@ -27,55 +27,6 @@ const crypto_id = cryptos.filter(elem => {
 });
 
 
-function construct_tr(day, price) {
-  tr = `
-      <tr class="table-success">
-          <th scope="row">${day}</th>
-          <td>${price}</td>
-      </tr>
-    `
-  return tr
-}
-
-
-
-window.addEventListener("load", async function(){
-  let day = $('#preview-day').text().replace(/\D/g,'')
-  await get_day(day, crypto_id[0].name)
-});
-
-
-
-
-function get_day(day, crypto) {
-  if (day && crypto) {
-    $('#preview-day').empty();
-    $('#preview-day').append(`${day} dias`)
-    axios({
-      method: 'post',
-      url: `${BASE_URL}/predict`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin' : '*'
-      },
-      data: {
-        "period": day,
-        "crypto": crypto
-      }
-    })
-      .then((response) => {
-        $("#tbody-predict").empty();
-        response.data.map((elem) => {
-          let tr = construct_tr(format_date(elem.day), elem.price)
-          $("#tbody-predict").append(tr);
-        })
-      }, (error) => {
-        console.log(error);
-      });
-  }
-}
-
-
 
 async function loadData(days){
   let dataOHLC = await getOHLC(crypto_id[0].id,  days)

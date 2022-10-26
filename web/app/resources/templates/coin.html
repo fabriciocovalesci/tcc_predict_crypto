@@ -14,10 +14,9 @@
 
 <div class="container py-2">
   <a href="{{ url_for('home.index') }}"  class="btn btn-primary">Voltar</a>
-  <div class="d-flex justify-content-between p-2 align-items-baseline">
+  <div class="d-flex justify-content-center p-2 align-items-baseline">
     <p></p>
     <h4 class="fw-bold fs-4 text">{{ crypto_name|upper }}</h4>
-    <p class="fw-bold">Preço atual: {{ price_current }}</p>
   </div>
 
 
@@ -50,24 +49,6 @@
   </div>
   
     <div class="container" id="chart-candlestick-coin"></div>
-
-  <!-- <div class="container p-3">
-      <div class="dropdown">
-          <span class="fw-bold">Prever: </span>
-          <button class="btn btn-info dropdown-toggle me-md-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-activity"></i>
-            Dias
-          </button>
-          <ul class="dropdown-menu">
-              {% for day in range(1,8) %}
-              <li style="cursor: pointer;"><a class="dropdown-item" onclick="get_day('{{day}}', crypto)" id="day_predict_{{day}}">{{ day }} dias</a></li>
-              {% endfor %}
-          </ul>
-          <span value="1" id="preview-day"> 1 dia</span>
-        </div>
-    </div> -->
-
-
 
   <table class="table table-dark table-striped">
     <thead >

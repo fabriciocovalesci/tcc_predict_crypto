@@ -22,6 +22,6 @@ def index():
 
 
         
-@home.route("/corr", methods=['GET'])
-def corr():
-    return helper_crypto.main()
+# @home.route("/corr", methods=['GET'])
+# def corr():
+#     return helper_crypto.main()
