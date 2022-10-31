@@ -13,23 +13,21 @@
   let crypto_corr =  {{ crypto_corr|tojson }};
 </script>
 
-      <div class="container">
-        <div class="row hidden-md-up">
-          {% for item in content_cards %}
-            {% if item.trend == "BUY" %}
-                {{ card_component(item.image, item.name, item.pair, item.price, item.id, item.trend, "green") }}
-            {% elif item.trend == "SELL" %}
-              {{ card_component(item.image, item.name, item.pair, item.price, item.id, item.trend, "red") }}
-            {% else %}
-              {{ card_component(item.image, item.name, item.pair, item.price, item.id, item.trend, "gray") }}
-            {% endif %}
-          {% endfor %}
-        </div>
+    <div class="container">
+      <div class="row hidden-md-up">
+        {% for item in content_cards %}
+          {% if item.trend == "Compra" %}
+              {{ card_component(item.image, item.name, item.pair, item.price, item.id, item.trend, "green") }}
+          {% elif item.trend == "Venda" %}
+            {{ card_component(item.image, item.name, item.pair, item.price, item.id, item.trend, "red") }}
+          {% else %}
+            {{ card_component(item.image, item.name, item.pair, item.price, item.id, item.trend, "gray") }}
+          {% endif %}
+        {% endfor %}
       </div>
-     
-      <div id="chart-heatmap"></div>
     </div>
-  </div>
+     
+    <div id="chart-heatmap"></div>
 
 {% endblock %}
 

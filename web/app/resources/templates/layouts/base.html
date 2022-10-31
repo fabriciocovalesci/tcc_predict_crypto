@@ -17,7 +17,6 @@
     
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
-
     <style>
       body { 
         padding-top: 65px; 
@@ -25,16 +24,12 @@
 
   </style>
 
- 
-    
     {% block title %}{% endblock %}
 </head>
 
 <body>
 
   {% include 'components/navbar.html' %}
-
-
 
 
   <main class="container container-sm container-md container-lg container-xl container-xxl container-fluid">
@@ -44,20 +39,9 @@
   </main>
 
 
+  {% include 'components/footer.html' %}
 
-
-
-  <!-- {% include 'components/footer.html' %} -->
-
-
-    <!-- <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <div class="col-md-4 d-flex align-items-center">
-        <span class="text-muted">footer</span>
-      </div>
-    </footer> -->
-
-
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js" integrity="sha256-qXBd/EfAdjOA2FGrGAG+b3YBn2tn5A6bhz+LSgYD96k=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js" integrity="sha256-qXBd/EfAdjOA2FGrGAG+b3YBn2tn5A6bhz+LSgYD96k=" crossorigin="anonymous"></script>
   <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
   
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

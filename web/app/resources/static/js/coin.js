@@ -27,6 +27,14 @@ const crypto_id = cryptos.filter(elem => {
 });
 
 
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 4,
+  maximumFractionDigits: 4, 
+});
+
+
 
 async function loadData(days){
   let dataOHLC = await getOHLC(crypto_id[0].id,  days)
@@ -89,5 +97,7 @@ $("#btnradiomax").change(async function(){
 
 
 $(window).on('load', async function() {
+  document.getElementById("price-current").innerHTML = formatter.format(document.getElementById("price-current").textContent);
+  document.getElementById("price-predict").innerHTML = formatter.format(document.getElementById("price-predict").textContent);
   await loadData(1);
 })

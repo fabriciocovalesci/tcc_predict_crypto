@@ -7,6 +7,17 @@ class Trend(Helper):
         super().__init__()
         
         
+    def signal(self, recommendation):
+        if "BUY" in recommendation:
+            return "Compra"
+        elif "SELL" in recommendation:
+            return "Venda"
+        elif "NEUTRAL" in recommendation:
+            return "Neutro"
+        else:
+            return "."
+        
+        
     def trend_crypto(self):
         try:
             for item in range(0, len(self.pairs)):
@@ -18,7 +29,7 @@ class Trend(Helper):
                         exchange="BINANCE",
                         interval=Interval.INTERVAL_1_DAY,
                     )
-                self.pairs[item]["trend"] = dict(trend.get_analysis().summary).get("RECOMMENDATION")
+                self.pairs[item]["trend"] = self.signal(dict(trend.get_analysis().summary).get("RECOMMENDATION"))
             return self.pairs
         except Exception as e:
             print(e)

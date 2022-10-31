@@ -20,10 +20,22 @@
           </div>
       </div>
       <div class="card-body">
-        <div class="d-flex justify-content-evenly">
-            <p class="fs-5 text-success">Tendência</p>
-            <p class="fs-5 text-success" id="card-{{ id }}">{{ trend }}</p>
-        </div>
+        {% if trend == "Compra" %}
+            <div class="d-flex justify-content-evenly">
+                <p class="fs-5 text-success">Recomendação </p>
+                <p class="fs-5 text-success" id="card-{{ id }}">{{ trend }}</p>
+            </div>
+        {% elif trend == "Venda" %}
+            <div class="d-flex justify-content-evenly">
+              <p class="fs-5 text-danger">Recomendação </p>
+              <p class="fs-5 text-danger" id="card-{{ id }}">{{ trend }}</p>
+          </div>
+        {% elif trend == "Neutro" %}
+            <div class="d-flex justify-content-evenly">
+              <p class="fs-5 text-secondary">Recomendação </p>
+              <p class="fs-5 text-secondary" id="card-{{ id }}">{{ trend }}</p>
+          </div>
+        {%  endif %}
         <div class="d-flex justify-content-evenly p-2">
           <a href="/coin/{{ name }}">
             <button class="btn btn-primary" type="button">Ver mais</button>
