@@ -17,7 +17,7 @@ class Features:
             { 'symbol_dot' : ['volume','high', 'low', 'open', 'mm21d'] },
             { 'symbol_doge' : ['volume','high', 'low', 'open', 'mm21d'] },
             { 'symbol_sol' : ['volume', 'high', 'low', 'open', 'mm21d'] },
-            { 'symbol_bnb' : ['mm7d','Low', 'Volume'] },
+            { 'symbol_bnb' : ['volume', 'high', 'low', 'open', 'mm21d', 'mm7d'] },
             { 'symbol_xrp' : ['volume', 'high', 'low', 'open', 'mm21d'] },
             { 'symbol_ada' : ['volume','high', 'low', 'open', 'mm21d'] },
             { 'symbol_eth' : ['volume','high', 'low', 'open', 'mm21d'] },
