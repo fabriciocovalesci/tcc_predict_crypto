@@ -1,6 +1,4 @@
 import httpx
-import matplotlib.pyplot as plt
-import seaborn as sns
 import io
 import locale
 from flask import send_file
