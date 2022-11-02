@@ -1,6 +1,6 @@
 ## Predict Crypto
 
-Este projeto é resultado de um trabalho de conclusão de curso, da faculdade de Análise e Desenvolvimento de Sistemas realizado no IFRS - Câmpus Sertão - RS.
+Este projeto é resultado de um trabalho de conclusão de curso, da faculdade de Análise e Desenvolvimento de Sistemas realizado no [IFRS - Câmpus Sertão - RS](https://ifrs.edu.br/sertao/).
 
 O projeto foi dividido em duas partes:
 
