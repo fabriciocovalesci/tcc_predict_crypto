@@ -20,6 +20,7 @@ Os modelos preditivos por sua vez, estão dentro da pasta [model_predict](https:
 3. Crie um virtualenv com Python 3. 
 
 `python3 -m venv .web`
+
 4. Ative o virtualenv
 
 `OS Linux: source .web/bin/activate`                                
