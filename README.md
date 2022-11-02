@@ -12,3 +12,9 @@ Os modelos preditivos por sua vez, estão dentro da pasta [model_predict](https:
  A aplicação web foi desenvolvida em Flask, todo projeto esta contido  na pasta [web.](https://github.com/fabriciocovalesci/tcc_predict_crypto/tree/main/web "web")
  
 ####  [Como executar a aplicação web](https://github.com/fabriciocovalesci/tcc_predict_crypto/tree/main/web)
+
+
+#### Modelos preditivos
+
+Dentro da pasta [correlation](https://github.com/fabriciocovalesci/tcc_predict_crypto/tree/main/model_predict/predict_crypto/EDA/correlation) você terá acesso ao [notebook](https://github.com/fabriciocovalesci/tcc_predict_crypto/blob/main/model_predict/predict_crypto/EDA/correlation/correlation.ipynb), que é realizado um estudo entre as correlações entre as criptomoedas. Veja na imagem abaixo o resultado desta analize.
+![Correlação entre as criptomoedas](https://github.com/fabriciocovalesci/tcc_predict_crypto/blob/main/model_predict/predict_crypto/EDA/correlation/correlation.png)
