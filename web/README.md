@@ -15,7 +15,7 @@
 
 5. Instale todas dependências do arquivo requirements.txt
 
-  `python3 install -r  requirements.txt`
+  `pip3 install -r  requirements.txt`
 
 6. Crie um arquivo **.env**  e adicione o conteudo que contém no arquivo de exemplo **env-example**
 
